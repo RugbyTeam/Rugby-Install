@@ -20,7 +20,7 @@ sudo apt-get install python-dev
 
 # install pip
 PIP_URL="https://bootstrap.pypa.io/get-pip.py"
-wget -qO- "$PIP_URL" | python -
+wget -qO- "$PIP_URL" | sudo python -
 
 # install virtualenv
 sudo pip install virtualenv
