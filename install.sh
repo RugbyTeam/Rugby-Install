@@ -6,8 +6,11 @@ sudo apt-get install dpkg-dev virtualbox-dkms
 
 # install vagrant
 VAGRANT_URL="https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb"
-wget "$VAGRANT_URL" -v -O vagrant.deb
-sudo dpkg -i vagrant.deb
+VAGRANT_FILE="vagrant.deb"
+
+wget "$VAGRANT_URL" -v -O "$VAGRANT_FILE"
+sudo dpkg -i "$VAGRANT_FILE"
+rm "$VAGRANT_FILE"
 
 # install linux headers
 KERNEL_VERSION=$(uname -r)
