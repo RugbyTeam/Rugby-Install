@@ -28,21 +28,23 @@ wget -qO- "$PIP_URL" | sudo python -
 # install virtualenv
 sudo pip install virtualenv
 
-mkdir "RugbyApp"
-RUGBY_APP_ROOT="$(pwd)/RugbyApp"
-RUGBY_CORE="$RUGBY_APP_ROOT/Rugby"
-RUGBY_SERVER="$RUGBY_APP_ROOT/Rugby-Server"
-RUGBY_TESTS="$RUGBY_APP_ROOT/Rugby-Tests"
-RUGBY_PLAYBOOKS="$RUGBY_APP_ROOT/Rugby-Playbooks"
+RUGBY_BASE_PATH="/opt"
+RUGBY_APP="$RUGBY_BASE_PATH/Rugby-App"
+RUGBY_CORE="$RUGBY_APP/Rugby-Core"
+RUGBY_SERVER="$RUGBY_APP/Rugby-Server"
+RUGBY_TESTS="$RUGBY_APP/Rugby-Tests"
+RUGBY_PLAYBOOKS="$RUGBY_APP/Rugby-Playbooks"
+
+sudo mkdir -p "$RUGBY_APP"
 
 # install git
 sudo apt-get install git
 
 # Clone project repos
-git clone https://github.com/RugbyTeam/Rugby "$RUGBY_CORE"
-git clone https://github.com/RugbyTeam/Rugby-Server "$RUGBY_SERVER"
-git clone https://github.com/RugbyTeam/Rugby-Tests "$RUGBY_TESTS"
-git clone https://github.com/RugbyTeam/Rugby-Playbooks "$RUGBY_PLAYBOOKS"
+sudo git clone https://github.com/RugbyTeam/Rugby "$RUGBY_CORE"
+sudo git clone https://github.com/RugbyTeam/Rugby-Server "$RUGBY_SERVER"
+sudo git clone https://github.com/RugbyTeam/Rugby-Tests "$RUGBY_TESTS"
+sudo git clone https://github.com/RugbyTeam/Rugby-Playbooks "$RUGBY_PLAYBOOKS"
 
 # create and activate virtualenv
 virtualenv "$RUGBY_CORE/venv"
