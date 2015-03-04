@@ -69,5 +69,9 @@ TO_PATCH="$PYTHONPATH/venv/lib/python2.7/site-packages/vagrant/__init__.py"
 PATCH="$PYTHONPATH/patches/vagrant_quiet_logging_issue.patch"
 patch "$TO_PATCH" < "$PATCH"
 
+# add upstart service
+cp rugby.conf /etc/init
+initctl reload-configuration
+
 SCRIPT
 }
