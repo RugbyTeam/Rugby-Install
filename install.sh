@@ -4,7 +4,7 @@
     sudo -k
 
     # run inside sudo
-    sudo sh <<SCRIPT
+    sudo sh <<'SCRIPT'
 
 # update sources
 apt-get update
