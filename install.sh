@@ -38,13 +38,13 @@ wget -qO- "$PIP_URL" | python -
 pip install virtualenv
 
 RUGBY_BASE_PATH="/opt"
-RUGBY_APP="$RUGBY_BASE_PATH/Rugby-App"
-RUGBY_CORE="$RUGBY_APP/Rugby-Core"
-RUGBY_SERVER="$RUGBY_APP/Rugby-Server"
-RUGBY_TESTS="$RUGBY_APP/Rugby-Tests"
-RUGBY_PLAYBOOKS="$RUGBY_APP/Rugby-Playbooks"
+RUGBY_ROOT="$RUGBY_BASE_PATH/Rugby"
+RUGBY_CORE="$RUGBY_ROOT/Rugby-Core"
+RUGBY_SERVER="$RUGBY_ROOT/Rugby-Server"
+RUGBY_TESTS="$RUGBY_ROOT/Rugby-Tests"
+RUGBY_PLAYBOOKS="$RUGBY_ROOT/Rugby-Playbooks"
 
-mkdir -p "$RUGBY_APP"
+mkdir -p "$RUGBY_ROOT"
 
 # install git
 apt-get install git
