@@ -17,7 +17,7 @@
     RUGBY_SERVER="${RUGBY_ROOT}/Rugby-Server"
     RUGBY_TESTS="${RUGBY_ROOT}/Rugby-Tests"
     RUGBY_PLAYBOOKS="${RUGBY_ROOT}/Rugby-Playbooks"
-    RUGBY_VM_LOGS="{RUGBY_ROOT}/VM_Logs"
+    RUGBY_VM_LOGS="${RUGBY_ROOT}/VM_Logs"
 
 
     # clear any previous sudo permission
@@ -39,12 +39,12 @@ dpkg -i "${VAGRANT_PACKAGE}"
 rm "${VAGRANT_PACKAGE}"
 
 # install linux headers
-apt-get install "linux-headers-${KERNEL_VERSION}"
+apt-get -y install "linux-headers-${KERNEL_VERSION}"
 
 dpkg-reconfigure virtualbox-dkms
 
 # install python-dev and pip
-apt-get install python-dev
+apt-get -y install python-dev
 
 # install pip
 wget -qO- "${PIP_URL}" | python -
@@ -53,13 +53,15 @@ wget -qO- "${PIP_URL}" | python -
 pip install virtualenv
 
 # install git
-apt-get install git
+apt-get -y install git
 
 # Clone project repos
 git clone https://github.com/RugbyTeam/Rugby "${RUGBY_CORE}"
 git clone https://github.com/RugbyTeam/Rugby-Server "${RUGBY_SERVER}"
 git clone https://github.com/RugbyTeam/Rugby-Tests "${RUGBY_TESTS}"
 git clone https://github.com/RugbyTeam/Rugby-Playbooks "${RUGBY_PLAYBOOKS}"
+
+mkdir -p ${RUGBY_VM_LOGS}
 
 chown -R "${OLD_USER}:${OLD_GROUP}" "${RUGBY_CORE}" "${RUGBY_SERVER}" "${RUGBY_TESTS}" "${RUGBY_PLAYBOOKS}" "${RUGBY_VM_LOGS}"
 SCRIPT

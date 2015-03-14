@@ -1,0 +1,13 @@
+#!/bin/bash
+RUGBY_ROOT="/opt"
+RUGBY_CORE="${RUGBY_ROOT}/Rugby"
+RUGBY_SERVER="${RUGBY_ROOT}/Rugby-Server"
+RUGBY_LOGS="/etc/log/rugby.log"
+
+CUR_DIR=$(pwd)
+
+. "${RUGBY_CORE}/venv/bin/activate"
+export PYTHONPATH="${RUGBY_CORE}"
+cd "${RUGBY_SERVER}"
+python "server.py"
+cd "${CUR_DIR}"
