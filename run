@@ -2,12 +2,22 @@
 RUGBY_ROOT="/opt"
 RUGBY_CORE="${RUGBY_ROOT}/Rugby"
 RUGBY_SERVER="${RUGBY_ROOT}/Rugby-Server"
-RUGBY_LOGS="/etc/log/rugby.log"
+RUGBY_LOGS="/var/log/rugby.log"
 
 CUR_DIR=$(pwd)
+
+OLD_USER=$(id -un)
+OLD_GROUP=$(id -gn)
+
+
+sudo sh <<SCRIPT
+touch "${RUGBY_LOGS}"
+chown "${OLD_USER}:${OLD_GROUP}" "${RUGBY_LOGS}"
+SCRIPT
 
 . "${RUGBY_CORE}/venv/bin/activate"
 export PYTHONPATH="${RUGBY_CORE}"
 cd "${RUGBY_SERVER}"
-python "server.py"
+echo "Rugby is running!"
+python "server.py" &> "${RUGBY_LOGS}"
 cd "${CUR_DIR}"
